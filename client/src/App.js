@@ -77,20 +77,6 @@ class App extends React.Component {
     ));
   };
 
-
-
-
-  delete = (event) => {
-    if (err) throw err;
-    var dbo = db.db("mydb");
-    dbo.collection("blogposts").drop(function(err, delOK) {
-      if (err) throw err;
-      if (delOK) console.log("Collection deleted");
-      db.close();
-    });
-  }
-
-
   render() {
 
     console.log('State: ', this.state);
@@ -123,7 +109,6 @@ class App extends React.Component {
           </div>
 
           <button>Submit</button>
-          <button onClick="{this.delete}">delete</button>
         </form>
 
         <div className="blog-">

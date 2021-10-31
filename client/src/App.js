@@ -79,6 +79,20 @@ class App extends React.Component {
     ));
   };
 
+
+
+
+  delete = (event) => {
+    if (err) throw err;
+    var dbo = db.db("mydb");
+    dbo.collection("blogposts").drop(function(err, delOK) {
+      if (err) throw err;
+      if (delOK) console.log("Collection deleted");
+      db.close();
+    });
+  }
+
+
   render() {
 
     console.log('State: ', this.state);
@@ -86,7 +100,7 @@ class App extends React.Component {
     //JSX
     return(
       <div className="app">
-        <h2>Welcome to the best app ever</h2>
+        <h2>Todolist for Database</h2>
         <form onSubmit={this.submit}>
           <div className="form-input">
             <input 
@@ -111,6 +125,7 @@ class App extends React.Component {
           </div>
 
           <button>Submit</button>
+          <button onClick="{this.delete}">delete</button>
         </form>
 
         <div className="blog-">

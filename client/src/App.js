@@ -73,7 +73,7 @@ class App extends React.Component {
       <div key={index} className="blog-post__display">
         <h3>{post.title}</h3>
         <p>{post.body}</p>
-          <button class="delete-btn">Delete</button>
+          <button class="btn btn-danger">Delete</button>
 
       </div>
     ));

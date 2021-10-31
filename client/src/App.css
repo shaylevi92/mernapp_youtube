@@ -33,6 +33,11 @@ button {
   outline: none;
 }
 
+.delete-btn{
+  background-color: #e91e1e;
+  
+}
+
 .blog-post__display {
   border: 1px solid lightgrey;
   margin: 5px 0px;

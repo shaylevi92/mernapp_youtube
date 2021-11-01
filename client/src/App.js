@@ -15,9 +15,6 @@ class App extends React.Component {
   };
 
 
-
-
-
   getBlogPost = () => {
     axios.get('/api')
       .then((response) => {
@@ -34,15 +31,6 @@ class App extends React.Component {
     const { name, value } = target;
     this.setState({ [name]: value });
   };
-
-
-  
-  handleDeletePost = (evt) => {
-    evt.preventDefault();
-    deletePostActionCreator(post._id);
-    getAllPostsActionCreator(postId);
-};
-
 
 
   submit = (event) => {
@@ -85,7 +73,7 @@ class App extends React.Component {
       <div key={index} className="blog-post__display">
         <h3>{post.title}</h3>
         <p>{post.body}</p>
-          <button class="btn btn-danger" onClick={this.handleDeletePost} >Delete</button>
+          <button class="btn btn-danger">Delete</button>
 
       </div>
     ));
@@ -94,7 +82,6 @@ class App extends React.Component {
   render() {
 
     console.log('State: ', this.state);
-
 
     //JSX
     return(

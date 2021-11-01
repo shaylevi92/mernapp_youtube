@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
-import BlogPost from '../../models/blogPost';
 
 class App extends React.Component {
 
@@ -33,6 +32,7 @@ class App extends React.Component {
     this.setState({ [name]: value });
   };
 
+
   submit = (event) => {
     event.preventDefault();
 
@@ -40,7 +40,6 @@ class App extends React.Component {
       title: this.state.title,
       body: this.state.body
     };
-
 
 
     axios({

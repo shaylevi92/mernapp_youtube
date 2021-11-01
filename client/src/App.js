@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
+import BlogPost from '../../models/blogPost';
 
 class App extends React.Component {
 
@@ -32,7 +33,6 @@ class App extends React.Component {
     this.setState({ [name]: value });
   };
 
-
   submit = (event) => {
     event.preventDefault();
 
@@ -41,6 +41,14 @@ class App extends React.Component {
       body: this.state.body
     };
 
+App.delete('/BlogPost/:id', (req, res) =>
+{
+  const id = req.params.id;
+  BlogPost.findByIdAndDelete(id)
+  .then(result => {
+    res.json({redirect: '/BlogPost'});
+  })
+})
 
     axios({
       url: '/api/save',
@@ -73,7 +81,7 @@ class App extends React.Component {
       <div key={index} className="blog-post__display">
         <h3>{post.title}</h3>
         <p>{post.body}</p>
-          <button class="btn btn-danger">Delete</button>
+          <button class="btn btn-danger" href="/" >Delete</button>
 
       </div>
     ));

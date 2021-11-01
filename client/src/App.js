@@ -41,14 +41,13 @@ class App extends React.Component {
       body: this.state.body
     };
 
-App.delete('/BlogPost/:id', (req, res) =>
-{
-  const id = req.params.id;
-  BlogPost.findByIdAndDelete(id)
-  .then(result => {
-    res.json({redirect: '/BlogPost'});
-  })
-})
+
+    /* DELETE /todos/:id */
+    Delete = (event) => {
+  BlogPost.findByIdAndRemove(this.id, req.body, function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
 
     axios({
       url: '/api/save',

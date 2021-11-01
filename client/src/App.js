@@ -41,18 +41,13 @@ class App extends React.Component {
       body: this.state.body
     };
 
-    var ObjectId = mongoose.Types.ObjectId;
-
-app.delete("/blogs/:id", function(req, res){
-  //Destroy blog
-  Blog.findByIdAndRemove(ObjectId(req.params.id), function(err){
-    if(err){
-      res.send(err);
-    } else {
-      res.redirect("/blogs");
+    function deleteTodo(id) {
+      return BlogPost.findByIdAndDelete(id, (error, result) => {
+        if(error) return Promise.reject({status: "failure", error:"Error deleting a BlogPost"});
+        else return Promise.resolve({status: "success", message: "BlogPost Deleted successfully"});
+      })
     }
-  });
-});
+
 
     axios({
       url: '/api/save',
@@ -85,10 +80,8 @@ app.delete("/blogs/:id", function(req, res){
       <div key={index} className="blog-post__display">
         <h3>{post.title}</h3>
         <p>{post.body}</p>
-          <button class="btn btn-danger" href="/" >Delete</button>
-          <form id="delete" action="/blogs/<%= blog.id %>?_method=DELETE" Method ="POST">
-  <button class = "ui red basic button">Delete</button>
-</form>
+          <button class="btn btn-danger" id="2" onClick="deleteTodo(this.id)" >Delete</button>
+
       </div>
     ));
   };

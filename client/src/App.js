@@ -27,6 +27,20 @@ class App extends React.Component {
       });
   }
 
+
+  
+  onDeleteClick(id, e) {
+    let inventory;
+    axios.delete(api() + '/' + id).then((deleted) => {
+     axios.get(api() + this.state.lastGET).then((response) => {
+      inventory = response.data.data
+      this.setState({inventory})
+     })
+    })
+   }
+  
+
+
   handleChange = ({ target }) => {
     const { name, value } = target;
     this.setState({ [name]: value });
@@ -73,7 +87,7 @@ class App extends React.Component {
       <div key={index} className="blog-post__display">
         <h3>{post.title}</h3>
         <p>{post.body}</p>
-          <button class="btn btn-danger">Delete</button>
+          <button class="btn btn-danger" id={post.id} onClick={this.onDeleteClick.bind(this, this.id)} >Delete</button>
 
       </div>
     ));

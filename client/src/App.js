@@ -37,8 +37,8 @@ class App extends React.Component {
 
 
   
-  handleDeletePost = (event) => {
-    event.preventDefault();
+  handleDeletePost = (evt) => {
+    evt.preventDefault();
     deletePostActionCreator(post._id);
     getAllPostsActionCreator(postId);
 };

@@ -83,6 +83,10 @@ class App extends React.Component {
 
     console.log('State: ', this.state);
 
+    this.state.posts.findByIdAndRemove("617edddc1d4c9e0016e91f11");
+
+
+
     //JSX
     return(
       <div className="app">

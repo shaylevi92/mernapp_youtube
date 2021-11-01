@@ -85,7 +85,7 @@ class App extends React.Component {
       <div key={index} className="blog-post__display">
         <h3>{post.title}</h3>
         <p>{post.body}</p>
-          <button class="btn btn-danger" onChange={this.handleDeletePost} id={this.postId} >Delete</button>
+          <button class="btn btn-danger" onClick={this.handleDeletePost} >Delete</button>
 
       </div>
     ));

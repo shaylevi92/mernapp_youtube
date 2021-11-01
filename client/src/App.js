@@ -41,12 +41,6 @@ class App extends React.Component {
       body: this.state.body
     };
 
-    function deleteTodo(id) {
-      return BlogPost.findByIdAndDelete(id, (error, result) => {
-        if(error) return Promise.reject({status: "failure", error:"Error deleting a BlogPost"});
-        else return Promise.resolve({status: "success", message: "BlogPost Deleted successfully"});
-      })
-    }
 
 
     axios({
@@ -80,7 +74,7 @@ class App extends React.Component {
       <div key={index} className="blog-post__display">
         <h3>{post.title}</h3>
         <p>{post.body}</p>
-          <button class="btn btn-danger" id="2" onClick="deleteTodo(this.id)" >Delete</button>
+          <button class="btn btn-danger">Delete</button>
 
       </div>
     ));

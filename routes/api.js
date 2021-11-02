@@ -18,6 +18,27 @@ router.get('/', (req, res) => {
         });
 });
 
+
+router
+  .get("/blog/:id", async (req, res) => {
+    const { id } = req.params;
+    const getBlog = await BlogPost.findOne({ _id: id });
+
+    res.render("particularBlog", { BlogPost: getBlog });
+  })
+
+  .get("/delete/:id", (req, res) => {
+    const { id } = req.params;
+    BlogPost.deleteOne({ _id: id })
+      .then(() => {
+        console.log("Deleted blog successfully!");
+        res.redirect("/");
+      })
+      .catch((err) => console.log(err));
+  })
+
+
+
 router.post('/save', (req, res) => {
     const data = req.body;
 
@@ -34,6 +55,8 @@ router.post('/save', (req, res) => {
         });
     });
 });
+
+
 
 
 router.get('/name', (req, res) => {

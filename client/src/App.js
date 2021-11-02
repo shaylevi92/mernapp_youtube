@@ -74,7 +74,8 @@ class App extends React.Component {
       <div key={index} className="blog-post__display">
         <h3>{post.title}</h3>
         <p>{post.body}</p>
-          <button  href=" /delete/<%= posts[index]._id %>"  class="btn btn-danger">Delete</button>
+          <button  href=" /delete/<%= blog._id %>"  class="btn btn-danger">Delete</button>
+          <a href=" /delete/<%= blog._id %>"  class="btn btn-warning">Edit</a>
 
       </div>
     ));
